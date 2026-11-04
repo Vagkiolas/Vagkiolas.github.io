@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evangelos Gkiolas · Control, Robotics & Machine Vision</title>
+<meta name="description" content="Electrical & Computer Engineering student at the University of Patras: control systems, robotics and machine vision.">
+<!-- Η σελίδα δεν εμφανίζεται στη Google μέχρι να σβήσεις την παρακάτω γραμμή -->
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --bg:#f7f6f2; --paper:#ffffff; --ink:#1b1d22; --muted:#5d6370; --line:#e3e1da;
+    --accent:#1f5f8b; --accent-soft:#e6eef5; --warm:#c8553d;
+    --mono: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+    --sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --serif: Georgia, "Times New Roman", serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:5;background:rgba(247,246,242,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  nav .name{font-weight:600;color:var(--ink);border:0}
+  nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px}
+  nav ul a{color:var(--muted)} nav ul a:hover{color:var(--ink)}
+
+  /* hero */
+  header.hero{padding:84px 0 56px}
+  .eyebrow{font:500 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  h1{font:600 clamp(36px,6vw,54px)/1.08 var(--serif);margin:0 0 20px;letter-spacing:-.01em}
+  .lede{font-size:19px;color:var(--muted);max-width:640px;margin:0 0 28px}
+  .lede strong{color:var(--ink);font-weight:600}
+  .links{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font-size:14px;font-weight:500}
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn.primary:hover{background:#000}
+
+  /* sections */
+  section{padding:56px 0;border-top:1px solid var(--line);scroll-margin-top:56px}
+  h2{font:600 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 28px}
+  h3{font:600 24px/1.25 var(--serif);margin:0 0 8px}
+  .meta{font:13px/1.4 var(--mono);color:var(--muted);margin-bottom:14px}
+  p{margin:0 0 14px}
+
+  /* thesis pipeline */
+  .thesis-intro{max-width:700px;margin-bottom:32px}
+  .tag{display:inline-block;font:500 12px/1 var(--mono);padding:5px 9px;border-radius:4px;background:var(--accent-soft);color:var(--accent);margin-right:6px}
+  .tag.wip{background:#fbeae5;color:var(--warm)}
+  .pipeline{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .step .num{font:600 12px/1 var(--mono);color:var(--accent)}
+  .step .body{padding:16px 18px 18px}
+  .step h4{margin:6px 0 6px;font-size:16px}
+  .step p{font-size:14.5px;color:var(--muted);margin:0}
+  .shot{position:relative;aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#f0efe9 0 10px,#ebe9e2 10px 20px);border-bottom:1px solid var(--line)}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .shot .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;font:12.5px/1.5 var(--mono);color:#8a8f99}
+  .shot .ph b{color:#6b717c;font-weight:600}
+  .next{margin-top:22px;padding:16px 18px;border:1px dashed #cfccc2;border-radius:10px;font-size:14.5px;color:var(--muted)}
+  .next b{color:var(--ink)}
+
+  /* projects */
+  .proj{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;padding:28px 0}
+  .proj + .proj{border-top:1px solid var(--line)}
+  .proj ul{margin:0 0 14px;padding-left:18px} .proj li{margin-bottom:6px}
+  .stat{display:inline-flex;align-items:baseline;gap:10px;padding:10px 14px;border-left:3px solid var(--warm);background:var(--paper);margin:4px 0 16px}
+  .stat .big{font:600 28px/1 var(--serif);color:var(--warm);white-space:nowrap}
+  .stat span{font-size:14px;color:var(--muted)}
+  .figure{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .figure img{width:100%;display:block}
+  .figure figcaption{font:12px/1.4 var(--mono);color:var(--muted);padding:10px 12px;border-top:1px solid var(--line)}
+  .pitch{display:block;width:100%;height:auto;background:#2f6b45}
+
+  /* education / skills */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .edu h3{font-size:19px}
+  .edu p{font-size:15px;color:var(--muted)}
+  .skills{display:grid;grid-template-columns:150px 1fr;gap:10px 20px;font-size:15px}
+  .skills dt{font:500 13px/1.9 var(--mono);color:var(--muted)}
+  .skills dd{margin:0}
+
+  footer{padding:36px 0 56px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media (max-width:760px){
+    nav ul{display:none}
+    header.hero{padding:56px 0 40px}
+    .pipeline,.two{grid-template-columns:1fr}
+    .proj{grid-template-columns:1fr}
+    .skills{grid-template-columns:1fr;gap:2px}
+    .skills dd{margin-bottom:10px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="#top">Evangelos Gkiolas</a>
+    <ul>
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Control · Robotics · Machine Vision</div>
+    <h1>Evangelos Gkiolas</h1>
+    <p class="lede">
+      Electrical &amp; Computer Engineering student at the <strong>University of Patras</strong>,
+      specializing in Signals, Control &amp; Robotics, with an Erasmus+ semester at
+      <strong>Politecnico di Milano</strong>. I'm currently teaching a robot to solve jigsaw puzzles.
+    </p>
+    <div class="links">
+      <a class="btn primary" href="cv.pdf">Download CV (PDF)</a>
+      <a class="btn" href="https://github.com/Vagkiolas">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/evangelos-gkiolas">LinkedIn</a>
+      <a class="btn" href="mailto:vagkiolas@gmail.com">Email</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ ΔΙΠΛΩΜΑΤΙΚΗ ═══════════════
+     Για να μπουν οι εικόνες: βάλε τα αρχεία στον φάκελο images/ με ΑΚΡΙΒΩΣ
+     αυτά τα ονόματα. Μέχρι τότε εμφανίζεται ριγέ πλαίσιο. Δεν χρειάζεται
+     να αλλάξεις τίποτα στον κώδικα. -->
+<section id="thesis">
+  <div class="wrap">
+    <h2>Diploma thesis</h2>
+    <div class="thesis-intro">
+      <h3>Puzzle Assembly via a Robotic Manipulator</h3>
+      <div class="meta"><span class="tag wip">In progress</span><span class="tag">Python</span><span class="tag">Deep learning</span><span class="tag">Robotics</span></div>
+      <p>A system that photographs a jigsaw puzzle, identifies every piece, works out the solution
+      and has a robotic arm assemble it. I'm currently building the vision pipeline. Each step below
+      feeds the next.</p>
+    </div>
+
+    <div class="pipeline">
+      <div class="step">
+        <div class="shot"><img src="images/thesis-1-input.jpg" alt="Input photo of scattered puzzle pieces" onerror="this.remove()">
+          <div class="ph"><b>images/thesis-1-input.jpg</b>input photo of the pieces</div></div>
+        <div class="body"><div class="num">01</div><h4>Detect the pieces</h4>
+          <p>U²-Net finds every piece on a downscaled copy of the photo. It's fast, and it only needs to know roughly where each piece is.</p></div>
+      </div>
+      <div class="step">
+        <div class="shot"><img src="images/thesis-2-masks.jpg" alt="Segmentation masks of each piece" onerror="this.remove()">
+          <div class="ph"><b>images/thesis-2-masks.jpg</b>segmentation masks</div></div>
+        <div class="body"><div class="num">02</div><h4>Segment at full resolution</h4>
+          <p>Each piece is cropped from the full-resolution image and segmented again with IS-Net, so the model sees many more pixels. The result is fused with the full-image mask so that regions with background-like colours are kept. I compared U²-Net, IS-Net and BiRefNet.</p></div>
+      </div>
+      <div class="step">
+        <div class="shot"><img src="images/thesis-3-contour.jpg" alt="Sub-pixel contour on a puzzle piece" onerror="this.remove()">
+          <div class="ph"><b>images/thesis-3-contour.jpg</b>close-up of the refined contour</div></div>
+        <div class="body"><div class="num">03</div><h4>Sub-pixel contours</h4>
+          <p>After mask clean-up (largest component, hole filling), each contour point is moved along its normal to the maximum of the image gradient.</p></div>
+      </div>
+      <div class="step">
+        <div class="shot"><img src="images/thesis-4-corners.jpg" alt="Detected corners and sides of a puzzle piece" onerror="this.remove()">
+          <div class="ph"><b>images/thesis-4-corners.jpg</b>piece with skeleton, hull &amp; corners</div></div>
+        <div class="body"><div class="num">04</div><h4>Find corners &amp; sides</h4>
+          <p>Positive and negative isthmuses come from the inner and outer skeleton. Tabs are cut at their isthmus chord, and the convex hull of what remains is nearly square. Its four vertices, snapped to the true contour, are the corners.</p></div>
+      </div>
+    </div>
+
+    <div class="next"><b>Next:</b> matching piece edges to solve the puzzle, then pose estimation and pick-and-place with the robotic arm.</div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROJECTS ═══════════════ -->
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+
+    <div class="proj">
+      <div>
+        <h3>Optimal Football Lineup Selection</h3>
+        <div class="meta">2024 · Python · Gurobi · Binary Integer Programming</div>
+        <p>Course project for <em>Linear &amp; Combinatorial Optimization</em>. Choosing a starting XI is
+        an assignment problem, so I modeled it as one for Olympiacos FC's 2023–24 squad.</p>
+        <div class="stat"><span class="big">9 / 11</span><span>starters matched the lineup actually fielded in the 2024 UEFA Conference League final</span></div>
+        <ul>
+          <li>42 binary player–position variables from a 27-player squad, with formation, positional and single-selection constraints</li>
+          <li>Player ratings built from position-weighted Football Manager 2024 attributes combined with real SofaScore match ratings</li>
+          <li>Solved and compared 5 formations (4-2-3-1 scored best)</li>
+          <li>Integer programs have no shadow prices, so I wrote my own sensitivity analysis: rating tolerance intervals for each starter and the best replacement for each absent player</li>
+        </ul>
+        <a href="https://github.com/Vagkiolas/football-squad-optimization-bip">Code &amp; report on GitHub →</a>
+      </div>
+      <figure class="figure">
+        <!-- 4-3-3 σχηματικά -->
+        <svg class="pitch" viewBox="0 0 300 400" role="img" aria-label="Diagram of a 4-3-3 formation">
+          <g fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2">
+            <rect x="14" y="14" width="272" height="372"/>
+            <line x1="14" y1="200" x2="286" y2="200"/><circle cx="150" cy="200" r="38"/>
+            <rect x="80" y="14" width="140" height="56"/><rect x="80" y="330" width="140" height="56"/>
+          </g>
+          <g fill="#fff">
+            <circle cx="150" cy="356" r="9"/>
+            <circle cx="52" cy="290" r="9"/><circle cx="114" cy="302" r="9"/><circle cx="186" cy="302" r="9"/><circle cx="248" cy="290" r="9"/>
+            <circle cx="85" cy="212" r="9"/><circle cx="150" cy="228" r="9"/><circle cx="215" cy="212" r="9"/>
+          </g>
+          <g fill="#f2c14e">
+            <circle cx="62" cy="110" r="9"/><circle cx="150" cy="88" r="9"/><circle cx="238" cy="110" r="9"/>
+          </g>
+        </svg>
+        <figcaption>Optimal 4-3-3, one of 5 formations solved</figcaption>
+      </figure>
+    </div>
+
+    <div class="proj">
+      <div>
+        <h3>Katevase To</h3>
+        <div class="meta">2025 · Python · Tkinter · yt-dlp · PyInstaller</div>
+        <p>A desktop downloader (MP4 / MP3) that I built for my mum. The rule was: paste a link,
+        press one button, never see a terminal. It's now on its fifth release.</p>
+        <ul>
+          <li>Thread-safe GUI: downloads run in a worker thread that reports to the GUI only through a message queue</li>
+          <li>Self-healing setup: missing dependencies are detected and installed with one click, including inside the standalone .exe</li>
+          <li>Falls back to browser cookies automatically when YouTube asks for sign-in; bilingual Greek / English interface</li>
+        </ul>
+        <a href="https://github.com/Vagkiolas/katevase-to">Code on GitHub →</a>
+      </div>
+      <figure class="figure">
+        <img src="https://raw.githubusercontent.com/Vagkiolas/katevase-to/main/screenshot.png" alt="Screenshot of the Katevase To app">
+        <figcaption>v1.5</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ EDUCATION & SKILLS ═══════════════ -->
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="two edu">
+      <div>
+        <h3>University of Patras</h3>
+        <div class="meta">2020 – present · Patras, Greece</div>
+        <p>Diploma (5-year Integrated Master) in Electrical &amp; Computer Engineering.
+        Specialization: Signals, Control &amp; Robotics.</p>
+        <p>Selected courses: Nonlinear Systems &amp; Control, State-Space Control, Adaptive Control &amp;
+        Reinforcement Learning, Intelligent Control, Robotic Systems, Artificial Intelligence,
+        Linear &amp; Combinatorial Optimization.</p>
+      </div>
+      <div>
+        <h3>Politecnico di Milano</h3>
+        <div class="meta">Feb – Jul 2026 · Milan, Italy</div>
+        <p>Erasmus+ exchange, MSc-level Electrical Engineering.</p>
+        <p>Courses: Advanced and Multivariable Control, Power Generation and Renewables,
+        Smart Grids.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:48px">Skills</h2>
+    <dl class="skills">
+      <dt>Languages</dt><dd>Python, C, MATLAB, Java</dd>
+      <dt>Vision &amp; ML</dt><dd>OpenCV, NumPy, U²-Net / IS-Net / BiRefNet segmentation</dd>
+      <dt>Control &amp; robotics</dt><dd>Simulink, ROS</dd>
+      <dt>Optimization</dt><dd>Gurobi, integer &amp; linear programming</dd>
+      <dt>Other</dt><dd>Git, LaTeX, LTspice, AutoCAD</dd>
+      <dt>Spoken</dt><dd>Greek (native), English (C2)</dd>
+    </dl>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span>Looking for an internship in control, automation or machine vision. <a href="mailto:vagkiolas@gmail.com">vagkiolas@gmail.com</a></span>
+    <span>© 2026 Evangelos Gkiolas</span>
+  </div>
+</footer>
+
+</body>
+</html>
