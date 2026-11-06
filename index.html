@@ -63,6 +63,7 @@
   .shot.contain img{object-fit:contain;padding:10px;background:inherit}
   .shot.dark{background:#1e1e1e}
   .shot.dark.grey{background:#282828}
+  .shot a{border:0;cursor:zoom-in}
   .shot .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;font:12.5px/1.5 var(--mono);color:#8a8f99}
   .shot .ph b{color:#6b717c;font-weight:600}
   .next{margin-top:22px;padding:16px 18px;border:1px dashed #cfccc2;border-radius:10px;font-size:14.5px;color:var(--muted)}
@@ -121,7 +122,7 @@
     <h1>Evangelos Gkiolas</h1>
     <p class="lede">
       Electrical &amp; Computer Engineering student at the <strong>University of Patras</strong>,
-      specializing in Systems, Control &amp; Robotics., with an Erasmus+ semester at
+      specializing in Systems, Control &amp; Robotics, with an Erasmus+ semester at
       <strong>Politecnico di Milano</strong>. I'm currently teaching a robot to solve jigsaw puzzles.
     </p>
     <div class="links">
@@ -150,15 +151,15 @@
 
     <div class="pipeline">
       <div class="step">
-        <div class="shot"><img src="images/thesis-1-photo.jpg" alt="Photo of a single puzzle piece on a cardboard background" onerror="this.remove()">
-          <div class="ph"><b>images/thesis-1-photo.jpg</b>photo of a piece</div></div>
+        <div class="shot"><a href="images/thesis-1-photo.jpg" target="_blank" rel="noopener"><img src="images/thesis-1-photo.jpg" alt="Photo of a single puzzle piece on a cardboard background" onerror="this.remove()"></a>
+          <div class="ph" aria-hidden="true"><b>images/thesis-1-photo.jpg</b>photo of a piece</div></div>
         <div class="body"><div class="num">01</div><h4>Photograph the pieces</h4>
           <p>Each piece is photographed from above, from the same height and under the same lighting,
           so that every side length is measured on the same scale.</p></div>
       </div>
       <div class="step">
-        <div class="shot contain"><img src="images/thesis-2-segmented.webp" alt="The same piece with the background removed" onerror="this.remove()">
-          <div class="ph"><b>images/thesis-2-segmented.webp</b>piece without background</div></div>
+        <div class="shot contain"><a href="images/thesis-2-segmented.webp" target="_blank" rel="noopener"><img src="images/thesis-2-segmented.webp" alt="The same piece with the background removed" onerror="this.remove()"></a>
+          <div class="ph" aria-hidden="true"><b>images/thesis-2-segmented.webp</b>piece without background</div></div>
         <div class="body"><div class="num">02</div><h4>Remove the background</h4>
           <p>IS-Net locates the piece in a downscaled copy of the photo, then segments it again on a
           full-resolution crop. Each contour point is then snapped to the strongest image edge with
@@ -166,8 +167,8 @@
           most accurate contours, at under half a second per piece.</p></div>
       </div>
       <div class="step">
-        <div class="shot contain dark grey"><img src="images/thesis-3-isthmus.jpg" alt="The piece with its isthmuses, corners and side types drawn" onerror="this.remove()">
-          <div class="ph"><b>images/thesis-3-isthmus.jpg</b>isthmuses, corners &amp; sides</div></div>
+        <div class="shot contain dark grey"><a href="images/thesis-3-isthmus.jpg" target="_blank" rel="noopener"><img src="images/thesis-3-isthmus.jpg" alt="The piece with its isthmuses, corners and side types drawn" onerror="this.remove()"></a>
+          <div class="ph" aria-hidden="true"><b>images/thesis-3-isthmus.jpg</b>isthmuses, corners &amp; sides</div></div>
         <div class="body"><div class="num">03</div><h4>Isthmuses, corners &amp; sides</h4>
           <p>Following Webster et al. (1991), the skeleton of the piece gives the necks of its tabs
           (green) and the skeleton of the background around it gives the mouths of its blanks (red).
@@ -176,14 +177,14 @@
           looks wrong.</p></div>
       </div>
       <div class="step">
-        <div class="shot contain dark"><img src="images/thesis-4-solved.jpg" alt="The solved 9-piece puzzle assembled from the photos" onerror="this.remove()">
-          <div class="ph"><b>images/thesis-4-solved.jpg</b>solved puzzle</div></div>
+        <div class="shot contain dark"><a href="images/thesis-4-solved.jpg" target="_blank" rel="noopener"><img src="images/thesis-4-solved.jpg" alt="The solved 9-piece puzzle assembled from the photos" onerror="this.remove()"></a>
+          <div class="ph" aria-hidden="true"><b>images/thesis-4-solved.jpg</b>solved puzzle</div></div>
         <div class="body"><div class="num">04</div><h4>Solve the puzzle</h4>
           <p>The solver places the border first, then the interior, and backtracks when it gets stuck.
           Two sides are joined only if they pass two independent checks: the isthmus check from the paper
           (neck vs. mouth width, isthmus distance functions) and a side check (equal length, curves that
-          coincide after rigid ICP alignment). The real 9-piece puzzle is solved with every join passing
-          both checks.</p></div>
+          coincide after rigid ICP alignment). Real 9-piece and 20-piece puzzles are solved with every join
+          passing both checks.</p></div>
       </div>
     </div>
 
@@ -280,7 +281,7 @@
     <h2 style="margin-top:48px">Skills</h2>
     <dl class="skills">
       <dt>Languages</dt><dd>Python, C, MATLAB, Java</dd>
-      <dt>Vision &amp; ML</dt><dd>OpenCV, NumPy, U²-Net / IS-Net / BiRefNet segmentation</dd>
+      <dt>Vision &amp; ML</dt><dd>OpenCV, scikit-image, NumPy, SciPy, PyTorch, ONNX Runtime; U²-Net / IS-Net / BiRefNet segmentation, sub-pixel edge detection, ICP / Procrustes alignment</dd>
       <dt>Control &amp; robotics</dt><dd>Simulink, ROS</dd>
       <dt>Optimization</dt><dd>Gurobi, integer &amp; linear programming</dd>
       <dt>Other</dt><dd>Git, LaTeX, LTspice, AutoCAD</dd>
