@@ -208,14 +208,16 @@
           <li><b>Block on an inclined plane:</b> 2nd-order MRAC with integral action vs. adaptive backstepping.
           MRAC settled smoothly; backstepping converged too, but with a strongly oscillating control input</li>
           <li><b>Inverted pendulum on a cart:</b> derived the nonlinear equations, linearized them into a
-          4-state model and used three MRAC loops (cart position, pendulum angle, angular velocity)</li>
+          4-state model and used three adaptive feedback loops (cart position, cart velocity, pendulum angle)</li>
           <li><b>Ball on a moving platform:</b> MIT-rule controllers for a lifting piston and a tilting joint</li>
           <li>Adaptation laws from the Lyapunov equation, with the reference model chosen to satisfy the matching condition</li>
         </ul>
         <p><b>What didn't work, and why:</b> the pendulum reached the upright position after about 3&nbsp;s
-        but could not stay there, and the ball's vertical error never reached zero. Looking back, I think the main
-        cause for the pendulum is that three independent single-loop controllers ignore the coupling of an
-        underactuated system; a multivariable MRAC with full state feedback would be the next thing to try.</p>
+        but could not stay there, and the ball's vertical error never reached zero. Going back over the
+        pendulum code, I found the main cause: the angular-velocity error was computed but never fed back, so
+        nothing damped the pendulum's motion. On top of that, the reference model was re-initialized at every
+        time step, so each adaptive gain only drifted in one direction instead of settling. The next version
+        would use full state feedback (including the angular velocity) in a multivariable MRAC.</p>
       </div>
       <figure class="figure">
         <a href="images/adaptive-mrac.png" target="_blank" rel="noopener" style="border:0"><img src="images/adaptive-mrac.png" alt="Simulation of the 2nd-order MRAC on the inclined plane: error, position, velocity and control input over time"></a>
