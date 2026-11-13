@@ -199,6 +199,32 @@
 
     <div class="proj">
       <div>
+        <h3>Adaptive Control of Nonlinear Systems</h3>
+        <div class="meta">2025 · Course project, team of 2 · MRAC · Backstepping · MIT rule</div>
+        <p>Course project for <em>Adaptive Control &amp; Reinforcement Learning</em>. Using a simulation
+        environment provided by the course, we picked three nonlinear systems with unknown masses and
+        designed adaptive controllers to stabilize each one.</p>
+        <ul>
+          <li><b>Block on an inclined plane:</b> 2nd-order MRAC with integral action vs. adaptive backstepping.
+          MRAC settled smoothly; backstepping converged too, but with a strongly oscillating control input</li>
+          <li><b>Inverted pendulum on a cart:</b> derived the nonlinear equations, linearized them into a
+          4-state model and used three MRAC loops (cart position, pendulum angle, angular velocity)</li>
+          <li><b>Ball on a moving platform:</b> MIT-rule controllers for a lifting piston and a tilting joint</li>
+          <li>Adaptation laws from the Lyapunov equation, with the reference model chosen to satisfy the matching condition</li>
+        </ul>
+        <p><b>What didn't work, and why:</b> the pendulum reached the upright position after about 3&nbsp;s
+        but could not stay there, and the ball's vertical error never reached zero. Looking back, I think the main
+        cause for the pendulum is that three independent single-loop controllers ignore the coupling of an
+        underactuated system; a multivariable MRAC with full state feedback would be the next thing to try.</p>
+      </div>
+      <figure class="figure">
+        <a href="images/adaptive-mrac.png" target="_blank" rel="noopener" style="border:0"><img src="images/adaptive-mrac.png" alt="Simulation of the 2nd-order MRAC on the inclined plane: error, position, velocity and control input over time"></a>
+        <figcaption>2nd-order MRAC on the inclined plane: error, position, velocity and control input.</figcaption>
+      </figure>
+    </div>
+
+    <div class="proj">
+      <div>
         <h3>Optimal Football Lineup Selection</h3>
         <div class="meta">2024 · Python · Gurobi · Binary Integer Programming</div>
         <p>Course project for <em>Linear &amp; Combinatorial Optimization</em>. Choosing a starting XI is
@@ -280,7 +306,7 @@
     <div class="two edu">
       <div>
         <h3>University of Patras</h3>
-        <div class="meta">2020 – present · Patras, Greece</div>
+        <div class="meta">2020 – expected 2027 · Patras, Greece</div>
         <p>Diploma (5-year Integrated Master) in Electrical &amp; Computer Engineering.
         Specialization: Systems, Control &amp; Robotics.</p>
         <p>Selected courses: Non-Linear Systems &amp; Control, State-Space Linear Systems Analysis, Adaptive Control &amp;
@@ -300,10 +326,10 @@
     <dl class="skills">
       <dt>Languages</dt><dd>Python, C, MATLAB, Java</dd>
       <dt>Vision &amp; ML</dt><dd>OpenCV, scikit-image, NumPy, SciPy, PyTorch, ONNX Runtime; U²-Net / IS-Net / BiRefNet segmentation, sub-pixel edge detection, ICP / Procrustes alignment</dd>
-      <dt>Control &amp; robotics</dt><dd>Simulink, ROS</dd>
+      <dt>Control &amp; robotics</dt><dd>Simulink, ROS; MRAC, adaptive backstepping, state-space design, Lyapunov analysis</dd>
       <dt>Optimization</dt><dd>Gurobi, integer &amp; linear programming</dd>
       <dt>Other</dt><dd>Git, LaTeX, LTspice, AutoCAD</dd>
-      <dt>Spoken</dt><dd>Greek (native), English (C2)</dd>
+      <dt>Spoken</dt><dd>Greek (native), English (C2), Italian (basic)</dd>
     </dl>
   </div>
 </section>
